@@ -1,99 +1,25 @@
 import { Component } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Header from "./Bootstrap/Header";
-import Home from "./Home";
-import Docs from "./Docs";
-import Login from "./Login";
-import PrivateRoute from "./PrivateRoute";
-import AdminRoute from "./AdminRoute";
+import ContainerRow from "./Bootstrap/ContainerRow";
 
 class App extends Component {
-  state = {
-    User: false
-  };
-  handleUserLogin = User => {
-    this.setState({ User });
-  };
+  state = {};
   render() {
-    const User = this.state.User;
-    const ProfileLink = (
-      <Link className="nav-link" to="/Profile">
-        Profile
-      </Link>
-    );
-    const LogoutLink = (
-      <a
-        className="nav-link"
-        href="/Logout"
-        onClick={e => {
-          e.preventDefault();
-          this.handleUserLogin(false);
-        }}
-      >
-        Logout
-      </a>
-    );
-    const UserItems = !User
-      ? [
-          <Link className="nav-link" to="/Login">
-            Login
-          </Link>
-        ]
-      : User.Role === "Admin"
-      ? [
-          ProfileLink,
-          <Link className="nav-link" to="/Admin">
-            Admin
-          </Link>,
-          LogoutLink
-        ]
-      : [ProfileLink, LogoutLink];
-    const NavItems = [
-      <Link className="nav-link" to="/">
-        Home
-      </Link>,
-      ...UserItems,
-      <Link className="nav-link" to="/Docs">
-        Docs
-      </Link>
-    ];
     return (
       <div className="App">
-        <Header
-          to="/"
-          Link={Link}
-          dark={true}
-          items={NavItems}
-          className="AppHeader"
-        >
+        <Header to="/" dark={true} className="AppHeader" Link={NavLink}>
           React App (Prav)
         </Header>
-        <Routes>
-          <Route
-            path="/Login"
-            element={
-              <Login User={User} handleUserLogin={this.handleUserLogin} />
-            }
-          />
-          <Route path="/Docs" element={<Docs />} />
-          <Route element={<PrivateRoute User={User} />}>
-            <Route
-              path="/Profile"
-              element={
-                <p>
-                  You're Logged In as {User.Name} and you're a {User.Role}!
-                </p>
-              }
-            />
-            <Route element={<AdminRoute User={User} />}>
-              <Route
-                path="/Admin"
-                element={<p>You're Logged In and also you're an Admin!</p>}
-              />
-            </Route>
-          </Route>
-          <Route path="/" element={<Home />} />
-        </Routes>
+        <div className="Home">
+          <ContainerRow fluid={true}>
+            <div className="col-12">
+              <h1 className="display-4 AppHeading text-center">
+                Welcome to Praveen&rsquo;s Modified Create React App!
+              </h1>
+            </div>
+          </ContainerRow>
+        </div>
       </div>
     );
   }
