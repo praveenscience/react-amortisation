@@ -4,7 +4,9 @@ import Header from "./Bootstrap/Header";
 import ContainerRow from "./Bootstrap/ContainerRow";
 
 class App extends Component {
-  state = {};
+  state = {
+    Expenditure: {}
+  };
   render() {
     return (
       <div className="App">
