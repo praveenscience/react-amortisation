@@ -9,13 +9,14 @@ class App extends Component {
     return (
       <div className="App">
         <Header to="/" dark={true} className="AppHeader" Link={NavLink}>
-          React App (Prav)
+          React Amortisation Schedule
         </Header>
         <div className="Home">
           <ContainerRow fluid={true}>
             <div className="col-12">
               <h1 className="display-4 AppHeading text-center">
-                Welcome to Praveen&rsquo;s Modified Create React App!
+                React Amortisation Schedule helps you to plan your budget
+                locally! Follow the Steps Below...
               </h1>
             </div>
           </ContainerRow>
