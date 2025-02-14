@@ -2,6 +2,7 @@ import { Component } from "react";
 import { NavLink } from "react-router-dom";
 import Header from "./Bootstrap/Header";
 import ContainerRow from "./Bootstrap/ContainerRow";
+import Expenditure from "./Expenditure";
 
 class App extends Component {
   state = {
@@ -21,6 +22,12 @@ class App extends Component {
                 locally! Follow the Steps Below...
               </h1>
             </div>
+          </ContainerRow>
+          <ContainerRow fluid={true} className="mt-3">
+            <div className="col-12 col-md-6">
+              <Expenditure />
+            </div>
+            <div className="col-12 col-md-6"></div>
           </ContainerRow>
         </div>
       </div>
